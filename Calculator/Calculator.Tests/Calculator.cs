@@ -21,4 +21,14 @@ class CalculatorTests
 
         Assert.AreEqual(3, result);
     }
+
+    [Test]
+    public void OnePlusTwoPlusThree()
+    {
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("1 + 2 + 3");
+
+        Assert.AreEqual(6, result);
+    }
 }
