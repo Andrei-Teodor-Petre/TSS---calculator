@@ -3,8 +3,22 @@
 class CalculatorTests
 {
     [Test]
-    public void Test()
+    public void OnePlusOne()
     {
-        Assert.IsTrue(true);
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("1 + 1");
+
+        Assert.AreEqual(2, result);
+    }
+
+    [Test]
+    public void OnePlusTwo()
+    {
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("1 + 2");
+
+        Assert.AreEqual(3, result);
     }
 }

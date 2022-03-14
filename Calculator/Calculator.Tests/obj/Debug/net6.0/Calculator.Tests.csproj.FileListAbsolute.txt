@@ -96,3 +96,6 @@
 /Users/vb/Projects/TSS---calculator/Calculator/Calculator.Tests/obj/Debug/net6.0/Calculator.Tests.pdb
 /Users/vb/Projects/TSS---calculator/Calculator/Calculator.Tests/obj/Debug/net6.0/Calculator.Tests.genruntimeconfig.cache
 /Users/vb/Projects/TSS---calculator/Calculator/Calculator.Tests/obj/Debug/net6.0/ref/Calculator.Tests.dll
+/Users/vb/Projects/TSS---calculator/Calculator/Calculator.Tests/bin/Debug/net6.0/CoverletSourceRootsMapping
+/Users/vb/Projects/TSS---calculator/Calculator/Calculator.Tests/bin/Debug/net6.0/Calculator.dll
+/Users/vb/Projects/TSS---calculator/Calculator/Calculator.Tests/bin/Debug/net6.0/Calculator.pdb
