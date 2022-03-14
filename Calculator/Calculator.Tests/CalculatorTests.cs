@@ -31,4 +31,15 @@ class CalculatorTests
 
         Assert.AreEqual(6, result);
     }
+
+
+    [Test]
+    public void FloatPlus()
+    {
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("1.64 + 2.05");
+
+        Assert.AreEqual(3.69, result);
+    }
 }
