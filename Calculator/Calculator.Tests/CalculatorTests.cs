@@ -11,6 +11,15 @@ class CalculatorTests
 
         Assert.AreEqual(2, result);
     }
+    [Test]
+    public void OnePlusOneNoSpace()
+    {
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("1+1");
+
+        Assert.AreEqual(2, result);
+    }
 
     [Test]
     public void OnePlusTwo()
@@ -34,12 +43,31 @@ class CalculatorTests
 
 
     [Test]
-    public void FloatPlus()
+    public void DecimalPlus()
     {
         var calc = new Calculator.Calculator();
 
         var result = calc.Eval("1.64 + 2.05");
 
-        Assert.AreEqual(3.69, result);
+        Assert.AreEqual(3.69d, result);
+    }
+    [Test]
+    public void ZeroPlus()
+    {
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("0 + .05");
+
+        Assert.AreEqual(0.05d, result);
+    }
+
+    [Test]
+    public void OneMultiply()
+    {
+        var calc = new Calculator.Calculator();
+
+        var result = calc.Eval("1 * .05");
+
+        Assert.AreEqual(0.05d, result);
     }
 }

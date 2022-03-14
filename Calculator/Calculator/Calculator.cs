@@ -6,40 +6,39 @@ public class Calculator
 	{
 	}
 
-	private List<String> operators = new List<String> { "+", "-", "*", "/" };
+	private char[] operators = new char[] { '+', '-', '*', '/' };
 
 
-	public int? Eval(string input)
+	public decimal? Eval(string input)
     {
 
 		
-		bool valid = ValidateInput(input);
+		var tokens = ValidateInput(input);
 
-		if(!valid)
+		if(tokens is null)
         {
 			return null;
         }
-
-		var tokens = input.Split(" ").ToList();
-		var operatorToks = tokens.Where(to => operators.Contains(to)).ToList();
+		
+		var operatorToks = tokens.Where(to => char.TryParse(to, out _) && operators.Contains(char.Parse(to))).ToList();
 		var numbers = tokens.Where(op => !operatorToks.Contains(op)).ToList();
 
-		return numbers.Sum(nu => Int32.Parse(nu));
+		return numbers.Sum(nu => decimal.Parse(nu));
     }
 
-    private bool ValidateInput(string input)
+    private List<string>? ValidateInput(string input)
     {
 
-		var tokens = input.Split(" ").ToList();
+		var tokens = input.Split(operators, StringSplitOptions.TrimEntries).ToList();
 
-		foreach(var tok in tokens)
+		foreach (var tok in tokens)
         {
-			if (!operators.Contains(tok) && !Int32.TryParse(tok, out _))
+			if (!(char.TryParse(tok, out _) && operators.Contains(char.Parse(tok))) && !decimal.TryParse(tok, out _))
             {
-				return false;
+				return null;
             }
         }
 
-		return true;
+		return tokens;
 	}
 }
