@@ -33,7 +33,6 @@ class CalculatorTests
     }
 
     [Test]
-    [Ignore("Trebuie tratat cazul cu mai mult de un operator in input")]
     public void OnePlusTwoPlusThree()
     {
         var calc = new Calculator.Calculator();

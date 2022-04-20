@@ -1,16 +1,21 @@
 ﻿namespace Calculator;
 
+
 public class Calculator
 {
     public Calculator()
     {
     }
 
-    private char[] _operators = new char[] { '+', '-', '*', '/' };
+    public static char[] _operators = new char[] { '+', '-', '*', '/' };
 
     public decimal? Eval(string input)
     {
         (var tokens, var operators) = Tokenize(input);
+
+        var root = new Node(input);
+
+        Console.WriteLine('K');
 
         if (tokens is null)
         {
@@ -46,12 +51,14 @@ public class Calculator
 
     private string Calculate<T1, T2, TResult>(string t1, string t2, Func<string, T1?> map1, Func<string, T2?> map2, Func<T1, T2, TResult> op)
     {
-        var t1_mapepd = map1(t1) ?? throw new ArgumentException();
+        var t1_mapped = map1(t1) ?? throw new ArgumentException();
         var t2_mapped = map2(t2) ?? throw new ArgumentException();
 
-        var result = op(t1_mapepd, t2_mapped);
+        var result = op(t1_mapped, t2_mapped);
 
         return result.ToString();
+        //(X) -> 4 + (X) -> 5
+        //1    +    3   *   ((4)  +  (5))
     }
 
     private (List<string>? tokens, List<string>? operators) Tokenize(string input)
@@ -75,4 +82,7 @@ public class Calculator
     {
         return decimal.TryParse(tok, out _);
     }
+
+
+
 }

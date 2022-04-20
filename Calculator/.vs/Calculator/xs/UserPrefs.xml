@@ -1,19 +1,17 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Calculator.Tests/Calculator.cs">
+﻿<Properties StartupConfiguration="{1BA9FB2E-E343-4D34-BD47-303230AD4F73}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Calculator/Calculator.cs">
     <Files>
-      <File FileName="Calculator.Tests/Calculator.cs" Line="10" Column="2" />
+      <File FileName="Calculator/Calculator.cs" Line="23" Column="43" />
+      <File FileName="Calculator.Tests/CalculatorTests.cs" Line="35" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Calculator" expanded="True">
             <Node name="Calculator" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-            </Node>
-            <Node name="Calculator.Tests" expanded="True">
               <Node name="Calculator.cs" selected="True" />
             </Node>
+            <Node name="Calculator.Tests" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -27,9 +25,13 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/andreipetre/Docs/facultate/TestSistSoft/Proiect/Calculator/Calculator/Calculator.cs" relfile="Calculator/Calculator.cs" line="54" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Calculator.Tests PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>
