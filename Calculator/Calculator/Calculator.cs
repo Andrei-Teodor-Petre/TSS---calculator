@@ -11,10 +11,7 @@ public class Calculator
 
     public decimal? Eval(string input)
     {
-
         var root = new Node(input);
-
-        Console.WriteLine('K');
 
         return RunTree(root);
     }
@@ -22,6 +19,10 @@ public class Calculator
     private decimal? Multiply(decimal? t1, decimal? t2) => t1 * t2;
 
     private decimal? Sum(decimal? t1, decimal? t2) => t1 + t2;
+
+    private decimal? Minus(decimal? t1, decimal? t2) => t1 - t2;
+
+    private decimal? Division(decimal? t1, decimal? t2) => t1 / t2;
 
     private decimal? Calculate(decimal? t1, decimal? t2, Func<decimal?, decimal?, decimal?> op) => op(t1, t2);
 
@@ -35,7 +36,8 @@ public class Calculator
             {
                 "+" =>  Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Sum),
                 "*" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Multiply),
-
+                "/" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Division),
+                "-" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Minus),
                 _ => null
             };
         }
@@ -45,6 +47,8 @@ public class Calculator
         }
 
     }
+
+  
 
 
 

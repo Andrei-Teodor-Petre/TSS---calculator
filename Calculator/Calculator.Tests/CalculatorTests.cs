@@ -72,4 +72,28 @@ class CalculatorTests
         var result = calc.Eval("5 / 2");
         Assert.AreEqual(2.5d, result);
     }
+
+    [Test]
+    public void TwoMinusOne()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("2 - 1");
+        Assert.AreEqual(1d, result);
+    }
+
+    [Test]
+    public void TwoMinusFive()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("2 - 5");
+        Assert.AreEqual(-3d, result);
+    }
+
+    [Test]
+    public void ParanthesisOrderOperations()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("1 + (-2 - (-3))");
+        Assert.AreEqual(2d, result);
+    }
 }
