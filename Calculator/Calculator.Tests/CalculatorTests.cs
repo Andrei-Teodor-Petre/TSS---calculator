@@ -19,7 +19,6 @@ class CalculatorTests
         Assert.AreEqual(2, result);
     }
 
-
     [Test]
     public void OnePlusTwo()
     {
@@ -88,6 +87,22 @@ class CalculatorTests
         var result = calc.Eval("2 - 5");
         Assert.AreEqual(-3d, result);
     }
+    
+    [Test]
+    public void MinusTwoPlusOne()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("-2 + 1");
+        Assert.AreEqual(-1d, result);
+    }
+
+    [Test]
+    public void TwoMinusMinusFive()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("2 --5");
+        Assert.AreEqual(7d, result);
+    }
 
     [Test]
     public void ParanthesisOrderOperations()
@@ -97,3 +112,4 @@ class CalculatorTests
         Assert.AreEqual(2d, result);
     }
 }
+
