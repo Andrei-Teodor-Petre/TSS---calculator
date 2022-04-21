@@ -19,7 +19,6 @@ namespace Calculator
 				LeftChild = new Node(value.Substring(0, indexFOp).Trim());
 				Value = firstOperator.ToString();
 				RightChild = new Node(value.Substring(indexFOp + 1, value.Length - indexFOp - 1).Trim());
-				//0 1 2 3 
 
 			}
             else
@@ -30,8 +29,9 @@ namespace Calculator
 
 		}
 
-		public bool IsOperator => Calculator._operators.Contains(Convert.ToChar(Value));
+		public bool IsOperator => Char.TryParse(Value, out var _) ? Calculator._operators.Contains(Convert.ToChar(Value)) : false;
 		public bool IsDecimal => Decimal.TryParse(Value, out var _);
+		public decimal? GetDecimal => this.IsDecimal ? Decimal.Parse(Value) : null;
 
 	}
 }
