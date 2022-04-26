@@ -20,8 +20,6 @@
 
 		public Node(string value, Node? parent = null)
 		{
-			value = ReduceParens(value);
-
 			(var firstOperator, var indexFOp) = GetLowestRankOperator(value);
 
 			Operator = parent;
@@ -43,53 +41,6 @@
 				Operand2 = new Node(Calculator.Eval(expr2, this)?.ToString()!, this);
 			}
 		}
-
-		private static string ReduceParens(string input)
-        {
-			(var openParen, var closeParen) = GetParenIndices(input);
-
-			if (openParen.HasValue && closeParen.HasValue)
-            {
-				var length = (closeParen.Value - openParen.Value) - 1;
-
-				var evaluatedInput = Calculator.Eval(input.Substring(openParen.Value + 1, length));
-
-				var result = $"{input.Substring(0, openParen.Value)} {evaluatedInput} {input.Substring(closeParen.Value + 1)}";
-
-				return ReduceParens(result);
-            }
-
-			return input;
-		}
-
-        private static (int?, int?) GetParenIndices(string value)
-        {
-			var st = new Stack<int>();
-
-			int idx = 0;
-
-            while (idx < value.Length)
-            {
-				if (value.ElementAt(idx) == '(')
-                {
-					st.Push(idx);
-                }
-
-				if (value.ElementAt(idx) == ')')
-                {
-					var openIndex = st.Pop();
-
-					if (!st.Any())
-					{
-						return (openIndex, idx);
-					}
-				}
-
-				idx++;
-            }
-
-			return (null, null);
-        }
 
         private static (char? op, int? idx) GetLowestRankOperator(string input, int offset = 0)
 		{

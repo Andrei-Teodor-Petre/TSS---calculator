@@ -3,10 +3,6 @@
 
 public class Calculator
 {
-    public Calculator()
-    {
-    }
-
     public static Operator[] _operators = new Operator[] { 
         new ('+', neutralValue: 0m, rank: 0),
         new ('-', neutralValue: 0m, rank: 0),
@@ -18,9 +14,56 @@ public class Calculator
 
     public static decimal? Eval(string input, Node? parent = null)
     {
-        var root = new Node(input, parent);
+        var root = new Node(ReduceParens(input), parent);
 
         return RunTree(root);
+    }
+
+    private static string ReduceParens(string input)
+    {
+        (var openParen, var closeParen) = GetParenIndices(input);
+
+        if (openParen.HasValue && closeParen.HasValue)
+        {
+            var length = (closeParen.Value - openParen.Value) - 1;
+
+            var evaluatedInput = Calculator.Eval(input.Substring(openParen.Value + 1, length));
+
+            var result = $"{input.Substring(0, openParen.Value)} {evaluatedInput} {input.Substring(closeParen.Value + 1)}";
+
+            return ReduceParens(result);
+        }
+
+        return input;
+    }
+
+    private static (int?, int?) GetParenIndices(string value)
+    {
+        var st = new Stack<int>();
+
+        int idx = 0;
+
+        while (idx < value.Length)
+        {
+            if (value.ElementAt(idx) == '(')
+            {
+                st.Push(idx);
+            }
+
+            if (value.ElementAt(idx) == ')')
+            {
+                var openIndex = st.Pop();
+
+                if (!st.Any())
+                {
+                    return (openIndex, idx);
+                }
+            }
+
+            idx++;
+        }
+
+        return (null, null);
     }
 
     private static decimal? Multiply(decimal? t1, decimal? t2) => t1 * t2;
