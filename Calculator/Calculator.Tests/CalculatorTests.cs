@@ -97,6 +97,14 @@ class CalculatorTests
     }
 
     [Test]
+    public void UnaryPlusOperator()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("+1");
+        Assert.AreEqual(1, result);
+    }
+
+    [Test]
     public void TwoMinusMinusFive()
     {
         var calc = new Calculator.Calculator();

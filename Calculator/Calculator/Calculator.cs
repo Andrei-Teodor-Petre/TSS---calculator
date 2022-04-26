@@ -7,7 +7,11 @@ public class Calculator
     {
     }
 
-    public static char[] _operators = new char[] { '+', '-', '*', '/' };
+    public static (char oper,decimal eVal)[] _operators = new [] { new ('+', 0m),
+        new ValueTuple<char, decimal>('-', 0m),
+        new ValueTuple<char, decimal>('*', 1m),
+        new ValueTuple<char, decimal>('/', 1m)
+    };
 
     public decimal? Eval(string input)
     {
