@@ -7,10 +7,10 @@ public class Calculator
     {
     }
 
-    public static (char oper,decimal eVal)[] _operators = new [] { new ('+', 0m),
-        new ValueTuple<char, decimal>('-', 0m),
-        new ValueTuple<char, decimal>('*', 1m),
-        new ValueTuple<char, decimal>('/', 1m)
+    public static Operator[] _operators = new Operator[] { new ('+', 0m, 0),
+        new ('-', 0m, 0),
+        new ('*', 1m, 1),
+        new ('/', 1m, 1)
     };
 
     public decimal? Eval(string input)
@@ -38,7 +38,7 @@ public class Calculator
 
             return root.Value switch
             {
-                "+" =>  Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Sum),
+                "+" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Sum),
                 "*" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Multiply),
                 "/" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Division),
                 "-" => Calculate(RunTree(root.LeftChild), RunTree(root.RightChild), Minus),

@@ -20,6 +20,9 @@
 
 		public Node(string value, Node? parent = null)
 		{
+			//add parentheses check
+
+
 			var firstOperator = GetFirstOperator(value);
 
 			Parent = parent;

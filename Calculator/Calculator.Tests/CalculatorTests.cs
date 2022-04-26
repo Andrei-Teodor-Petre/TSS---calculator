@@ -119,5 +119,21 @@ class CalculatorTests
         var result = calc.Eval("1 + (-2 - (-3))");
         Assert.AreEqual(2d, result);
     }
+
+    [Test]
+    public void OnePlusTwoMultiplyThree()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("1 + 2 * 3");
+        Assert.AreEqual(7d, result);
+    }
+
+    [Test]
+    public void OneMultiplyTwoPlusThree()
+    {
+        var calc = new Calculator.Calculator();
+        var result = calc.Eval("2 * 2 + 3");
+        Assert.AreEqual(7d, result);
+    }
 }
 
