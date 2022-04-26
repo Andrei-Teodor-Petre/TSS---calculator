@@ -5,8 +5,7 @@ class CalculatorTests
     [Test]
     public void OnePlusOne()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1 + 1");
+        var result = Calculator.Calculator.Eval("1 + 1");
         Assert.AreEqual(2, result);
     }
 
@@ -14,16 +13,14 @@ class CalculatorTests
     [Test]
     public void OnePlusOneNoSpace()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1+1");
+        var result = Calculator.Calculator.Eval("1+1");
         Assert.AreEqual(2, result);
     }
 
     [Test]
     public void OnePlusTwo()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1 + 2");
+        var result = Calculator.Calculator.Eval("1 + 2");
         Assert.AreEqual(3, result);
     }
 
@@ -31,8 +28,7 @@ class CalculatorTests
     [Test]
     public void OnePlusTwoPlusThree()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1 + 2 + 3");
+        var result = Calculator.Calculator.Eval("1 + 2 + 3");
         Assert.AreEqual(6, result);
     }
 
@@ -40,8 +36,7 @@ class CalculatorTests
     [Test]
     public void DecimalPlus()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1.64 + 2.05");
+        var result = Calculator.Calculator.Eval("1.64 + 2.05");
         Assert.AreEqual(3.69d, result);
     }
 
@@ -49,8 +44,7 @@ class CalculatorTests
     [Test]
     public void ZeroPlus()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("0 + .05");
+        var result = Calculator.Calculator.Eval("0 + .05");
         Assert.AreEqual(0.05d, result);
     }
 
@@ -58,8 +52,7 @@ class CalculatorTests
     [Test]
     public void OneMultiply()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1 * .05");
+        var result = Calculator.Calculator.Eval("1 * .05");
         Assert.AreEqual(0.05d, result);
     }
 
@@ -67,73 +60,106 @@ class CalculatorTests
     [Test]
     public void Division()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("5 / 2");
+        var result = Calculator.Calculator.Eval("5 / 2");
         Assert.AreEqual(2.5d, result);
     }
 
     [Test]
     public void TwoMinusOne()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("2 - 1");
+        var result = Calculator.Calculator.Eval("2 - 1");
         Assert.AreEqual(1d, result);
     }
 
     [Test]
     public void TwoMinusFive()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("2 - 5");
+        var result = Calculator.Calculator.Eval("2 - 5");
         Assert.AreEqual(-3d, result);
     }
     
     [Test]
     public void MinusTwoPlusOne()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("-2 + 1");
+        var result = Calculator.Calculator.Eval("-2 + 1");
         Assert.AreEqual(-1d, result);
     }
 
     [Test]
     public void UnaryPlusOperator()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("+1");
+        var result = Calculator.Calculator.Eval("+1");
         Assert.AreEqual(1, result);
     }
 
     [Test]
     public void TwoMinusMinusFive()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("2 --5");
+        var result = Calculator.Calculator.Eval("2 --5");
         Assert.AreEqual(7d, result);
     }
 
     [Test]
-    public void ParanthesisOrderOperations()
+    public void ParenthesesOrderOperations()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1 + (-2 - (-3))");
+        var result = Calculator.Calculator.Eval("1 + (-2 - (-3))");
         Assert.AreEqual(2d, result);
     }
 
     [Test]
     public void OnePlusTwoMultiplyThree()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("1 + 2 * 3");
+        var result = Calculator.Calculator.Eval("1 + 2 * 3");
         Assert.AreEqual(7d, result);
     }
 
     [Test]
     public void OneMultiplyTwoPlusThree()
     {
-        var calc = new Calculator.Calculator();
-        var result = calc.Eval("2 * 2 + 3");
+        var result = Calculator.Calculator.Eval("2 * 2 + 3");
         Assert.AreEqual(7d, result);
+    }
+
+    [Test]
+    public void ComplexInputOrderOfOperations()
+    {
+        var result = Calculator.Calculator.Eval("2 * 3 + 5 * 7 + 8 / 4 - 1");
+        Assert.AreEqual(42d, result);
+    }
+
+    [Test]
+    public void TwoPowFive()
+    {
+        var result = Calculator.Calculator.Eval("2p5");
+        Assert.AreEqual(32d, result);
+    }
+
+    [Test]
+    public void TwoPowTen()
+    {
+        var result = Calculator.Calculator.Eval("2 p 10");
+        Assert.AreEqual(1024d, result);
+    }
+
+    [Test]
+    public void ThirdRootOfEight()
+    {
+        var result = Calculator.Calculator.Eval("8 r 3");
+        Assert.AreEqual(2d, result);
+    }
+
+    [Test]
+    public void MultipleParenthesesTuples()
+    {
+        var result = Calculator.Calculator.Eval("(10 - 2) / (9 - 5)");
+        Assert.AreEqual(2d, result);
+    }
+
+    [Test]
+    public void VeryComplexInput()
+    {
+        var result = Calculator.Calculator.Eval("((2 + 5 * (4p2 - 1)) r 2) / (9 - 5)");
+        Assert.AreEqual(2.19374109684803m, result);
     }
 }
 
