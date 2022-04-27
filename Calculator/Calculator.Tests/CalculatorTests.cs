@@ -3,6 +3,13 @@
 class CalculatorTests
 {
     [Test]
+    public void TwoEvalsToTwo()
+    {
+        var result = Calculator.Calculator.Eval("2");
+        Assert.AreEqual(2, result);
+    }
+
+    [Test]
     public void OnePlusOne()
     {
         var result = Calculator.Calculator.Eval("1 + 1");
@@ -160,6 +167,13 @@ class CalculatorTests
     {
         var result = Calculator.Calculator.Eval("((2 + 5 * (4p2 - 1)) r 2) / (9 - 5)");
         Assert.AreEqual(2.19374109684803m, result);
+    }
+
+    [Test]
+    public void InvalidInput()
+    {
+        var result = Calculator.Calculator.Eval("sadasd");
+        Assert.IsNull(result);
     }
 }
 
