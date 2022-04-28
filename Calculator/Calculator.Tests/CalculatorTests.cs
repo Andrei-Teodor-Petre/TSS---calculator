@@ -24,12 +24,6 @@ class CalculatorTests
         Assert.AreEqual(2, result);
     }
 
-    [Test]
-    public void OnePlusTwo()
-    {
-        var result = Calculator.Calculator.Eval("1 + 2");
-        Assert.AreEqual(3, result);
-    }
 
 
     [Test]
@@ -107,13 +101,6 @@ class CalculatorTests
     }
 
     [Test]
-    public void ParenthesesOrderOperations()
-    {
-        var result = Calculator.Calculator.Eval("1 + (-2 - (-3))");
-        Assert.AreEqual(2d, result);
-    }
-
-    [Test]
     public void OnePlusTwoMultiplyThree()
     {
         var result = Calculator.Calculator.Eval("1 + 2 * 3");
@@ -123,10 +110,10 @@ class CalculatorTests
     [Test]
     public void OneMultiplyTwoPlusThree()
     {
-        var result = Calculator.Calculator.Eval("2 * 2 + 3");
-        Assert.AreEqual(7d, result);
+        var result = Calculator.Calculator.Eval("1 * 2 + 3");
+        Assert.AreEqual(5d, result);
     }
-
+    
     [Test]
     public void ComplexInputOrderOfOperations()
     {
@@ -149,6 +136,13 @@ class CalculatorTests
     }
 
     [Test]
+    public void ThirdRootOfOne()
+    {
+        var result = Calculator.Calculator.Eval("1r3");
+        Assert.AreEqual(1d, result);
+    }
+
+    [Test]
     public void ThirdRootOfEight()
     {
         var result = Calculator.Calculator.Eval("8 r 3");
@@ -163,6 +157,13 @@ class CalculatorTests
     }
 
     [Test]
+    public void ParenthesesOrderOperations()
+    {
+        var result = Calculator.Calculator.Eval("1 + (-2 - (-3))");
+        Assert.AreEqual(2d, result);
+    }
+
+    [Test]
     public void VeryComplexInput()
     {
         var result = Calculator.Calculator.Eval("((2 + 5 * (4p2 - 1)) r 2) / (9 - 5)");
@@ -173,6 +174,13 @@ class CalculatorTests
     public void InvalidInput()
     {
         var result = Calculator.Calculator.Eval("sadasd");
+        Assert.IsNull(result);
+    }
+
+    [Test]
+    public void UndefinedOperator()
+    {
+        var result = Calculator.Calculator.Eval("2@3");
         Assert.IsNull(result);
     }
 }

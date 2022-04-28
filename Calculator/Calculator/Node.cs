@@ -37,8 +37,8 @@
 				var expr1 = value.Substring(0, indexFOp!.Value).Trim();
 				var expr2 = value.Substring(indexFOp!.Value + 1, value.Length - indexFOp!.Value - 1).Trim();
 
-				Operand1 = new Node(Calculator.Eval(expr1, this)?.ToString()!, this);
-				Operand2 = new Node(Calculator.Eval(expr2, this)?.ToString()!, this);
+				Operand1 = new Node(Calculator.Eval(expr1!, this)!.ToString()!, this);
+				Operand2 = new Node(Calculator.Eval(expr2!, this)!.ToString()!, this);
 			}
 		}
 

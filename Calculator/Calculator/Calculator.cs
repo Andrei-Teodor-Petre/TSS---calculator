@@ -9,7 +9,8 @@ public class Calculator
         new ('*', neutralValue: 1m, rank: 1),
         new ('/', neutralValue: 1m, rank: 1),
         new ('p', neutralValue: null, rank: 2),
-        new ('r', neutralValue: null, rank: 2)
+        new ('r', neutralValue: null, rank: 2),
+        new ('@', neutralValue: null, rank: 1),
     };
 
     public static decimal? Eval(string input, Node? parent = null)
@@ -66,13 +67,12 @@ public class Calculator
         return (null, null);
     }
 
-    private static decimal? Multiply(decimal? t1, decimal? t2) => t1 * t2;
+    private static decimal? Multiply(decimal? t1, decimal? t2) => t1!.Value * t2!.Value;
 
-    private static decimal? Sum(decimal? t1, decimal? t2) => t1 + t2;
+    public static decimal? Sum(decimal? t1, decimal? t2) => t1!.Value + t2!.Value;
+    private static decimal? Minus(decimal? t1, decimal? t2) => t1!.Value - t2!.Value;
 
-    private static decimal? Minus(decimal? t1, decimal? t2) => t1 - t2;
-
-    private static decimal? Division(decimal? t1, decimal? t2) => t1 / t2;
+    private static decimal? Division(decimal? t1, decimal? t2) => t1!.Value / t2!.Value;
 
     private static decimal? Pow(decimal? t1, decimal? t2) => (decimal?)Math.Pow((double)t1!.Value, (double)t2!.Value);
 
@@ -82,7 +82,7 @@ public class Calculator
 
     private static decimal? RunTree(Node? node)
     {
-        _ = node ?? throw new ArgumentNullException(nameof(node));
+        _ = node!.Value;// ?? throw new ArgumentNullException(nameof(node!));
 
         if(node.IsOperator)
         {
